@@ -17,6 +17,31 @@ int factorial(int n) {
 }
 
 int main(int argc, char **argv) {
+  if (argc != 4) {
+    printf("Usage: ./combinatorials n C|P r\n");
+    return 1;
+  }
+  int n = atoi(argv[1]);
+  char operation = argv[2][0];
+  int r = atoi(argv[3]);
+
+  if (n <= 0 || r <= 0 || r > n) {
+    printf("Error: n and r must be positive integers, and r must be less than or equal to n.\n");
+    return 1;
+  }
+
+  if (operation == 'C') {
+    // nCr = n! / (r! * (n - r)!)
+    int result = factorial(n) / (factorial(r) * factorial(n - r));
+    printf("%d\n", result);
+  } else if (operation == 'P') {
+    // nPr = n! / (n - r)!
+    int result = factorial(n) / factorial(n - r);
+    printf("%d\n", result);
+  } else {
+    printf("Error: Operation must be 'C' for combinations or 'P' for permutations.\n");
+    return 1;
+  }
   /*
   The program should accept a command line argument as follows:
   ./combinatorials n C r
@@ -40,4 +65,6 @@ int main(int argc, char **argv) {
   You should try and use functions to write your program.
 
   */
+
+
 }
