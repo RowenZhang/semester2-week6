@@ -37,6 +37,10 @@ void test_obvious_palindrome(void) {
  * 1. Call TEST_CHECK(condition) to verify a condition
  * 2. Use TEST_MSG("message") to explain what went wrong if it fails
  * ============================================================ */
+void test_single_char(void) {
+    TEST_CHECK(is_palindrome("a")==1);
+    TEST_MSG("Expected 'a' to be a palindrome");
+}
 
 
 
@@ -52,6 +56,7 @@ TEST_LIST = {
      * { "single character", test_single_char },
      * { "empty string", test_empty_string },
      */
+    { "single character", test_single_char },
     { NULL, NULL }
 };
 
